@@ -1,10 +1,7 @@
 " Vim indent file
-" Language:		Text, Rspec Story Format
-" Maintainer:		Mike Vincent <mike@vincent.ws>
-" Info:			$Id: story.vim,v 0.0.1 2007/11/15 13:54:25 mike Exp $
-" URL:			http://mike.vincent.ws
-" Anon CVS:		See above site
-" Release Coordinator:	Mike Vincent <mike@vincent.ws>
+" Language:		Text, Cucumber Feature
+" Maintainer:	Ben Mabey <ben@benmabey.com>
+" Original Author: Mike Vincent <mike@vincent.ws> (http://github.com/agile/vim-story/)
 
 " 0. Initialization {{{1
 " =================
@@ -16,15 +13,15 @@ endif
 let b:did_indent = 1
 
 setlocal autoindent
-setlocal indentexpr=GetStoryIndent()
-setlocal indentkeys=*<Return>,o,O,!^F ",=Story,=Scenario,=Given,=When,=Then,=And
+setlocal indentexpr=GetFeatureIndent()
+setlocal indentkeys=*<Return>,o,O,!^F ",=Feature,=Scenario,=Given,=When,=Then,=And
 
 " Only define the function once.
-if exists("*GetStoryIndent")
+if exists("*GetFeatureIndent")
   finish
 endif
 
-function! GetStoryIndent()
+function! GetFeatureIndent()
   let vcol = col('.')
   call cursor(v:lnum,1)
   call cursor(v:lnum,vcol)
@@ -34,8 +31,8 @@ function! GetStoryIndent()
   let line = getline(lnum)
   let cline = getline(v:lnum)
 
-  " Story statements should always start at margin 0
-  if cline =~# '^\s*Story' 
+  " Feature statements should always start at margin 0
+  if cline =~# '^\s*Feature' 
     let ind = 0
   endif
 
@@ -44,8 +41,8 @@ function! GetStoryIndent()
     let ind = 0 + (&sw * 2)
   endif
 
-  " Story content should start 1 indentation in
-  if line =~# '^\s*Story' && cline !~# '^\s*Scenario'
+  " Feature content should start 1 indentation in
+  if line =~# '^\s*Feature' && cline !~# '^\s*Scenario'
     let ind = 0 + &sw
   endif
   

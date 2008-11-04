@@ -8,9 +8,9 @@ endif
 syn case match
 
 "setlocal iskeyword+=:
-syn keyword xStatement Story Scenario Given When Then And contained
+syn keyword xStatement Feature Scenario Given When Then And contained
 
-syn match storyContext    /^\s*Story.*/     contains=xStatement
+syn match featureContext    /^\s*Feature.*/     contains=xStatement
 syn match scenarioContext /^\s*Scenario.*$/ contains=xStatement
 syn match givenContext    /^\s*Given.*$/    contains=ALL
 syn match whenContext     /^\s*When.*$/     contains=ALL
@@ -25,7 +25,7 @@ syn region dblStringToken start=/"/ skip=/\\"/ end=/"/ contained
 
 hi link xStatement Statement
 
-hi link storyContext    Title
+hi link featureContext    Title
 hi link scenarioContext Title
 hi link givenContext    Function
 hi link whenContext     Function
@@ -35,4 +35,4 @@ hi link stringToken     Question
 hi link dblStringToken  Question
 
 
-let b:current_syntax = "story"
+let b:current_syntax = "feature"

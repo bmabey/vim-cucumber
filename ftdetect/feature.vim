@@ -1,2 +1,2 @@
-au BufRead,BufNewFile *.story,*_story set ft=story 
+au BufRead,BufNewFile *.feature,*_feature set ft=feature 
 

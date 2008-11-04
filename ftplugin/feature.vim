@@ -1,7 +1,8 @@
 " Vim filetype plugin
-" Language:	Rspec plain text story format
-" Maintainer:	Mike Vincent <mike@vincent.ws>
-" Last Change:	2008 Feb 08
+" Language:	Cucumber Feature
+" Maintainer:	Ben Mabey <ben@benmabey.com>
+" Original Author: Mike Vincent <mike@vincent.ws> (http://github.com/agile/vim-story/)
+" Last Change:	2008 Nov 03
 
 " Only do this when not done yet for this buffer
 if (exists("b:did_ftplugin"))
@@ -9,8 +10,8 @@ if (exists("b:did_ftplugin"))
 endif
 let b:did_ftplugin = 1
 
-let b:story_dir = expand("%:p:h")
-let &l:path = fnamemodify(b:story_dir, ':h').",".&l:path
+let b:feature_dir = expand("%:p:h")
+let &l:path = fnamemodify(b:feature_dir, ':h').",".&l:path
 let b:undo_ftplugin = "setl path<"
 
 setlocal textwidth=72
@@ -23,5 +24,5 @@ setlocal spell
 " Given, When, Then, And statements and open the alternate file and
 " create step stubs
 "
-" TODO: make it so when a story/step is saved it's run and the output is 
+" TODO: make it so when a feature/step is saved it's run and the output is 
 " tossed into a preview window..
