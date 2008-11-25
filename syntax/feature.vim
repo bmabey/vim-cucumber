@@ -11,7 +11,7 @@ syn case match
 " english
 syn keyword xStatement Feature Scenario Given When Then And More Examples contained
 " japanese
-syn keyword xStatement フィーチャ シナリオ 前提 もし ならば かつ contained
+syn keyword xStatement フィーチャ シナリオ 前提 もし ならば かつ 他のサンプル contained
 
 " english
 syn match featureContext  /^\s*Feature.*/   contains=xStatement
@@ -20,7 +20,7 @@ syn match givenContext    /^\s*Given.*$/    contains=ALL
 syn match whenContext     /^\s*When.*$/     contains=ALL
 syn match thenContext     /^\s*Then.*$/     contains=ALL
 syn match andContext      /^\s*And.*$/      contains=ALL
-syn match andContext      /^\s*More Examples.*$/ contains=ALL
+syn match moreContext      /^\s*More Examples.*$/ contains=ALL
 
 " japanese
 syn match featureContextJ  /^\s*フィーチャ.*/ contains=xStatement
@@ -29,6 +29,7 @@ syn match givenContextJ    /^\s*前提.*$/      contains=ALL
 syn match whenContextJ     /^\s*もし.*$/      contains=ALL
 syn match thenContextJ     /^\s*ならば.*$/    contains=ALL
 syn match andContextJ      /^\s*かつ.*$/      contains=ALL
+syn match moreContextJ      /^\s*他のサンプル.*$/ contains=ALL
 
 " FIXME matches apostrophes, too :(
 syn region stringToken start=/'/ skip=/\\'/ end=/'/ contained
@@ -45,6 +46,7 @@ hi link givenContext    Function
 hi link whenContext     Function
 hi link thenContext     Function
 hi link andContext      Function
+hi link moreContext     Function
 hi link stringToken     Question
 hi link dblStringToken  Question
 
@@ -55,6 +57,7 @@ hi link givenContextJ    Function
 hi link whenContextJ     Function
 hi link thenContextJ     Function
 hi link andContextJ      Function
+hi link moreContextJ     Function
 hi link stringTokenJ     Question
 hi link dblStringTokenJ  Question
 
