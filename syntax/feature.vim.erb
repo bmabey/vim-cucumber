@@ -1,0 +1,32 @@
+if version < 600
+	syntax clear
+elseif exists("b:current_syntax")
+  finish
+endif
+
+" make things case sensitive
+syn case match
+
+"setlocal iskeyword+=:
+syn keyword xStatement <%= all_keywords_array.join(' ') %> contained
+
+syn match featureContext  /^\s*<%= feature_keywords_regexp %>.*/   contains=xStatement
+syn match scenarioContext /^\s*<%= scenario_keywords_regexp %>.*$/ contains=xStatement
+syn match stepContext    /^\s*<%= step_keywords_regexp %>.*$/    contains=ALL
+
+" FIXME matches apostrophes, too :(
+syn region stringToken start=/'/ skip=/\\'/ end=/'/ contained
+syn region dblStringToken start=/"/ skip=/\\"/ end=/"/ contained
+" FIXME this matches 
+"syn match stringToken /'.+'/ contained
+
+hi link xStatement Statement
+
+" english
+hi link featureContext  Title
+hi link scenarioContext Title
+hi link stepContext    Function
+hi link stringToken     Question
+hi link dblStringToken  Question
+
+let b:current_syntax = "feature"

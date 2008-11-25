@@ -47,3 +47,49 @@ def create_directory(dir)
   create_directory(parent) unless File.exists?(parent)
   Dir.mkdir(dir)
 end
+
+# taken and modified from http://github.com/bmabey/cucumber-tmbundle
+
+class SyntaxGenerator
+  def generate
+    require 'yaml'
+    require 'erb'
+    require 'cucumber'
+
+    scenario_keywords_array = []
+    feature_keywords_array  = []
+    step_keywords_array     = []
+
+    Cucumber.config.each do |_, words|
+      scenario_keywords_array << words.delete('scenario')
+      feature_keywords_array << words.delete('feature')
+      step_keywords_array.concat(words.values)
+    end
+    
+    scenario_keywords = scenario_keywords_array.uniq.compact.sort
+    feature_keywords  = feature_keywords_array.uniq.compact.sort
+    step_keywords     = step_keywords_array.uniq.compact.sort
+
+    all_keywords_array = scenario_keywords + feature_keywords + step_keywords
+
+    scenario_keywords_regexp = scenario_keywords.join('|')
+    feature_keywords_regexp  = feature_keywords.join('|')
+    step_keywords_regexp     = step_keywords.join('|')
+
+    template    = ERB.new(IO.read(File.dirname(__FILE__) + '/syntax/feature.vim.erb'))
+    syntax      = template.result(binding)
+
+    syntax_file = File.dirname(__FILE__) + '/syntax/feature.vim'
+    File.open(syntax_file, "w") do |io|
+      io.write(syntax)
+    end
+        
+  end
+end
+
+namespace :syntax do
+  desc 'Generates the plain text syntax file for all languages supported by Cucumber'
+  task :generate do
+    SyntaxGenerator.new.generate
+  end
+end

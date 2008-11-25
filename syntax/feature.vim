@@ -8,28 +8,11 @@ endif
 syn case match
 
 "setlocal iskeyword+=:
-" english
-syn keyword xStatement Feature Scenario Given When Then And More Examples contained
-" japanese
-syn keyword xStatement フィーチャ シナリオ 前提 もし ならば かつ 他のサンプル contained
+syn keyword xStatement Cenário Escenario Scenarie Scenario Scenariu Scenariusz Skenario Stsenaarium Szenario Сценарий سيناريو シナリオ 场景 Arwedd Característica Egenskab Egenskap Feature Fitur Fonction Functionalitate Functionaliteit Funcționalitate Funktionalität Funzionalità Omadus Właściwość Функционал خاصية フィーチャ 功能 A Aber Ale Allora Alors Als And And y'all Anrhegedig scenario Atunci But But y'all Cand Contoh Tambahan Cuando Când Daca Dacă Dado DadoElEscenario DadoOCenário Dan Dane Dann DanyScenariusz Dar Dato DatoLoScenario Dengan DenganSkenario E Eeldades EeldadesStsenaariumit En Entonces Então Et Flere eksempler Gegeben sei Gegebenes Szenario Gegeven GegevenScenario Gitt GittScenario Given Given y'all GivenScenario Givet GivetScenarie GivetScenario Hychwaneg enghreifftiau Ja Jeżeli Ketika Kui Kuid Lorsque Ma Maar Mai multe exemple Mais Maka Mas Meer voorbeelden Mehr Beispiele Men More Examples Más ejemplos När Når Och Og Ond Oraz Pero Più esempi Plus d'exemples Pryd Quando ScenariuDat Si Siis Soit SoitScenario Så Tapi Then Then y'all Und Wenn When When y'all WięcejPrzykładów Wtedy Y Yna anrhegedig a Și ДанныйСценарий Если И Но Сначала То اذاً امثلة اكثر بفرض بفرض سيناريو معين لكن متى و かつ しかし ならば もし 他のサンプル 但是 假如 前提 前提シナリオ 引用场景 当 而且 那么 contained
 
-" english
-syn match featureContext  /^\s*Feature.*/   contains=xStatement
-syn match scenarioContext /^\s*Scenario.*$/ contains=xStatement
-syn match givenContext    /^\s*Given.*$/    contains=ALL
-syn match whenContext     /^\s*When.*$/     contains=ALL
-syn match thenContext     /^\s*Then.*$/     contains=ALL
-syn match andContext      /^\s*And.*$/      contains=ALL
-syn match moreContext      /^\s*More Examples.*$/ contains=ALL
-
-" japanese
-syn match featureContextJ  /^\s*フィーチャ.*/ contains=xStatement
-syn match scenarioContextJ /^\s*シナリオ.*$/  contains=xStatement
-syn match givenContextJ    /^\s*前提.*$/      contains=ALL
-syn match whenContextJ     /^\s*もし.*$/      contains=ALL
-syn match thenContextJ     /^\s*ならば.*$/    contains=ALL
-syn match andContextJ      /^\s*かつ.*$/      contains=ALL
-syn match moreContextJ      /^\s*他のサンプル.*$/ contains=ALL
+syn match featureContext  /^\s*Arwedd|Característica|Egenskab|Egenskap|Feature|Fitur|Fonction|Functionalitate|Functionaliteit|Funcționalitate|Funktionalität|Funzionalità|Omadus|Właściwość|Функционал|خاصية|フィーチャ|功能.*/   contains=xStatement
+syn match scenarioContext /^\s*Cenário|Escenario|Scenarie|Scenario|Scenariu|Scenariusz|Skenario|Stsenaarium|Szenario|Сценарий|سيناريو|シナリオ|场景.*$/ contains=xStatement
+syn match stepContext    /^\s*A|Aber|Ale|Allora|Alors|Als|And|And y'all|Anrhegedig scenario|Atunci|But|But y'all|Cand|Contoh Tambahan|Cuando|Când|Daca|Dacă|Dado|DadoElEscenario|DadoOCenário|Dan|Dane|Dann|DanyScenariusz|Dar|Dato|DatoLoScenario|Dengan|DenganSkenario|E|Eeldades|EeldadesStsenaariumit|En|Entonces|Então|Et|Flere eksempler|Gegeben sei|Gegebenes Szenario|Gegeven|GegevenScenario|Gitt|GittScenario|Given|Given y'all|GivenScenario|Givet|GivetScenarie|GivetScenario|Hychwaneg enghreifftiau|Ja|Jeżeli|Ketika|Kui|Kuid|Lorsque|Ma|Maar|Mai multe exemple|Mais|Maka|Mas|Meer voorbeelden|Mehr Beispiele|Men|More Examples|Más ejemplos|När|Når|Och|Og|Ond|Oraz|Pero|Più esempi|Plus d'exemples|Pryd|Quando|ScenariuDat|Si|Siis|Soit|SoitScenario|Så|Tapi|Then|Then y'all|Und|Wenn|When|When y'all|WięcejPrzykładów|Wtedy|Y|Yna|anrhegedig a|Și|ДанныйСценарий|Если|И|Но|Сначала|То|اذاً|امثلة اكثر|بفرض|بفرض سيناريو معين|لكن|متى|و|かつ|しかし|ならば|もし|他のサンプル|但是|假如|前提|前提シナリオ|引用场景|当|而且|那么.*$/    contains=ALL
 
 " FIXME matches apostrophes, too :(
 syn region stringToken start=/'/ skip=/\\'/ end=/'/ contained
@@ -42,23 +25,8 @@ hi link xStatement Statement
 " english
 hi link featureContext  Title
 hi link scenarioContext Title
-hi link givenContext    Function
-hi link whenContext     Function
-hi link thenContext     Function
-hi link andContext      Function
-hi link moreContext     Function
+hi link stepContext    Function
 hi link stringToken     Question
 hi link dblStringToken  Question
-
-" japanese
-hi link featureContextJ  Title
-hi link scenarioContextJ Title
-hi link givenContextJ    Function
-hi link whenContextJ     Function
-hi link thenContextJ     Function
-hi link andContextJ      Function
-hi link moreContextJ     Function
-hi link stringTokenJ     Question
-hi link dblStringTokenJ  Question
 
 let b:current_syntax = "feature"
