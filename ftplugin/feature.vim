@@ -18,7 +18,8 @@ setlocal textwidth=72
 setlocal expandtab
 setlocal shiftwidth=2
 setlocal tabstop=2
-setlocal spell
+" FIXME: spell does not support japanese
+" setlocal spell
 
 " TODO: Write a helper function that will grab a selected block of
 " Given, When, Then, And statements and open the alternate file and
