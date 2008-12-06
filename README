@@ -1,14 +1,3 @@
+I have deprecated this plugin in favor of tpope's newer and much superior one:
 
-Fork of Mike Vincent's "vim-story" (http://github.com/agile/vim-story/) for working with Rspec's plain text stories.
-
-This provides the same functionality (i.e. syntax, indention rules) but for Cucumber features.
-
-I'm not a vim expert so any help would be greatly appreciated. :)
-
-TODO:
-  * Add new Cucumber keywords
-  * Add multi-language support
-  * Take advantage of the 'cucumber' command to run features
-  * File switching perhaps?
-
-
+http://github.com/tpope/vim-cucumber/tree/master
